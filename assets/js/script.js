@@ -1,44 +1,30 @@
 $(function(){
-  $('#button').click(function(){
-    // La fonction parseInt() analyse une chaîne de caractère fournie en argument et renvoie un entier exprimé dans une base donnée.
-    var firstNotes = parseInt($('#first').val());
-    var secondNotes = parseInt($('#second').val());
-    var thirdNotes = parseInt($('#third').val());
-    var fourthNotes = parseInt($('#fourth').val());
-    var fifthNotes = parseInt($('#fifth').val());
+$('#submit').click(function(){
+  //On stocke la regex pour faire une note 10 ou 10;75 ...
+  var noteRegex = new RegExp (/^([0-9]{1,2})([\.,]{1}[0-9]{1,2}){0,1}$/);
+  //On stocke dans des variables la valeur récupérée des input. Grâce à number, on met les strings en nombres.
+  var firstNote = $('#firstNote').val();
+  var secondNote = $('#secondNote').val();
+  var thirdNote = $('#thirdNote').val();
+  var fourthNote = $('#fourthNote').val();
+  var fifthNote = $('#fifthNote').val();
 
-    // Calculer sa moyenne
-    var additionNotes = firstNotes + secondNotes + thirdNotes + fourthNotes + fifthNotes;
-    var result = Math.round(additionNotes / 5);
-    console.log(firstNotes);
-    console.log(secondNotes);
-    console.log(thirdNotes);
-    console.log(fourthNotes);
-    console.log(fourthNotes);
-    console.log(additionNotes);
-    //  ma regex
-    var regex = /^[0-9]$|^1[0-9]$|^2[0]$/;
-    // regex avec nombre à virgule (qui ne sert à rien içi car il y a parseInt qui renvoie un entier) = /^[0-9][.][0-9]$|^1[0-9][.][0-9]?$|^2[0]$/;
-
-    // déterminer son appréciation
-    // <= inférieur ou égal
-    // >= supérieur ou égal
-  if ((regex.test(firstNotes) != true) || (regex.test(secondNotes) != true) || (regex.test(thirdNotes) != true) || (regex.test(fourthNotes) != true) || (regex.test(fifthNotes) != true)){
-     alert ('Merci de bien vouloir rentrer des notes entre 0 et 20 !');
-    // result est supérieure ou égale à 0 et inférieure à 10
-  } else if(result >= 0 && result < 10){
-      alert('tu as ' +result + ' de moyenne, ton appréciation est : "En dessous de la moyenne"');
-      // result supérieure ou égale à 10 et inférieure à 13
-    } else if (result >= 10 && result  < 13){
-      alert('tu as ' +result + ' de moyenne, ton appréciation est : "Moyen"');
-      // supérieure ou égale à 13 et inférieure à 16
-    } else if (result >= 13 && result < 16) {
-      alert('tu as ' +result + ' de moyenne, ton appréciation est : "Bien"');
-      // supérieure ou égale à 16 et inférieure à 20
-    } else if (result >= 16 && result < 20) {
-      alert('tu as ' +result + ' de moyenne, ton appréciation est : "Très bien"');
-    } else {
-      alert('tu as ' +result + ' de moyenne, ton appréciation est : "Excellent"');
+  if(firstNote.match(noteRegex) && secondNote.match(noteRegex) && thirdNote.match(noteRegex) && fourthNote.match(noteRegex) && fifthNote.match(noteRegex)){
+    //On fait la moyenne par rapport aux 5 notes.
+    var average = (parseFloat(firstNote) + parseFloat(secondNote) + parseFloat(thirdNote) + parseFloat(fourthNote) + parseFloat(fifthNote)) / 5;
+    if(average >= 0 && average < 10){
+      alert('Moyenne : ' + average + '\nAppréciations : \nEn dessous de la moyenne.');
+    }else if (average >= 10 && average < 13){
+      alert('Moyenne : ' + average + '\nAppréciations : \nMoyen.');
+    }else if (average >= 13 && average < 16){
+      alert('Moyenne : ' + average + '\nAppréciations : \nBien.');
+    }else if (average >= 16 && average < 20){
+      alert('Moyenne : ' + average + '\nAppréciations : \nTrès bien.');
+    }else{
+      alert('Excellent !');
     }
-  });
+  }else{
+    alert('Veuillez entrer des notes valides svp.');
+  }
+});
 });

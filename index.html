@@ -2,19 +2,18 @@
 <html lang="fr" dir="ltr">
 <head>
   <meta charset="utf-8" />
-  <title>Exercice 2</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <title>Exercice2</title>
 </head>
 <body>
   <form>
-    <input id="first" type="text" name="" >
-    <input id="second" type="text" name="" >
-    <input id="third" type="text" name="" >
-    <input id="fourth" type="text" name="" >
-    <input id="fifth" type="text" name="" >
+    <label for="firstNote">1ère note : </label><input type="number" id="firstNote" min="0" max="20" />
+    <label for="secondNote">2ème note : </label><input type="number" id="secondNote" min="0" max="20" />
+    <label for="thirdNote">3ème note :  </label><input type="number" id="thirdNote" min="0" max="20" />
+    <label for="fourthNote">4ème note : </label><input type="number" id="fourthNote" min="0" max="20" />
+    <label for="fifthNote">5ème note :  </label><input type="number" id="fifthNote" min="0" max="20" />
+    <button type="button" id="submit">Valider</button>
   </form>
-  <button id="button" type="button" name="button">cliquez ! </button>
-  <script src="assets/js/jquery-3.3.1.js"></script>
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
   <script src="assets/js/script.js"></script>
 </body>
 </html>
